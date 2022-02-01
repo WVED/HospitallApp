@@ -46,6 +46,7 @@ namespace HospitalApp
             if (selectedDoctor !=null)
             {
                 GenerateSchedule(selectedDoctor);
+                TxtBlockDoctor.Text = selectedDoctor.FullName;
             }
         }
 
@@ -111,6 +112,23 @@ namespace HospitalApp
                 App.DataBase.SaveChanges();
                 MessageBox.Show("Вы записаны на приём!");
                 ComboDoctor_SelectionChanged(ComboDoctor, null);
+            }
+        }
+
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            if(ComboDoctor.SelectedItem != null)
+            {
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == true)
+                {
+                    IDocumentPaginatorSource idpSource = flowDocumentAllData;
+                    printDialog.PrintDocument(idpSource.DocumentPaginator, $"Report_AllData_From_{DateTime.Now.ToShortDateString()}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Не выбран врач!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

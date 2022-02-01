@@ -67,6 +67,9 @@
     <Compile Include="Entities\AppoinmentType.cs" />
     <Compile Include="Entities\ScheduleAppoinment.cs" />
     <Compile Include="Entities\ScheduleHeader.cs" />
+    <Compile Include="PrintWindow.xaml.cs">
+      <DependentUpon>PrintWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ScheduleAppointmentControl.xaml.cs">
       <DependentUpon>ScheduleAppointmentControl.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PrintWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ScheduleAppointmentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

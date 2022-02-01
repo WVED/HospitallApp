@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HospitalApp"
         mc:Ignorable="d"
-        Title="Запись на приём" Height="450" Width="800">
+        Title="Запись на приём" Height="450" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -16,10 +16,17 @@
             <ComboBox Name="ComboSpecialization" DisplayMemberPath="Name" SelectionChanged="ComboSpecialization_SelectionChanged"></ComboBox>
             <TextBlock Text="Врач:" Style="{StaticResource BlockCommon}" Width="auto" Margin="40 5 5 5"></TextBlock>
             <ComboBox Name="ComboDoctor" DisplayMemberPath="FullName" SelectionChanged="ComboDoctor_SelectionChanged"></ComboBox>
+            <Button Name="BtnPrint" Margin="15 0 0 0" Click="BtnPrint_Click" Content="Печать"></Button>
         </StackPanel>
-
-        <DataGrid x:Name="DGridSchedule" Grid.Row="1" SelectionUnit="Cell">
-            
-        </DataGrid>
+        <FlowDocumentScrollViewer Grid.Row="1" Name="scrollAllData" Visibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <FlowDocument Name="flowDocumentAllData" ColumnWidth="700" MinPageHeight="1000">
+                <BlockUIContainer>
+                    <StackPanel Orientation="Vertical" >
+                        <TextBlock x:Name="TxtBlockDoctor" FontSize="20" ></TextBlock>
+                        <DataGrid x:Name="DGridSchedule" Grid.Row="1" SelectionUnit="Cell" RowHeaderWidth="0"></DataGrid>
+                    </StackPanel>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
     </Grid>
 </Window>
